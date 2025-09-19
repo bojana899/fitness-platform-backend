@@ -7,15 +7,18 @@ WORKDIR /app
 # Install build tools and dependencies
 RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
-# Copy package files and install dependencies
+# Copy package files and install all dependencies (including dev)
 COPY package*.json yarn.lock* ./
-RUN yarn install --production --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
 
 # Build the application
 RUN yarn build
+
+# Remove dev dependencies to reduce image size
+RUN yarn install --production --frozen-lockfile
 
 # Expose port
 EXPOSE 1337
