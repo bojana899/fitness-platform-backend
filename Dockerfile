@@ -1,18 +1,21 @@
-# Use Node.js 18 Alpine for smaller image size
-FROM node:18-alpine
+# Use Node.js 18 (full image for better compatibility)
+FROM node:18
 
 # Set working directory
 WORKDIR /app
 
+# Install build tools and dependencies
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+
 # Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install --omit=dev
+COPY package*.json yarn.lock* ./
+RUN yarn install --production --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN yarn build
 
 # Expose port
 EXPOSE 1337
@@ -21,4 +24,4 @@ EXPOSE 1337
 ENV NODE_ENV=production
 
 # Start the application
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
