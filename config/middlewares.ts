@@ -7,7 +7,7 @@ export default [
     config: {
       enabled: true,
       headers: '*',
-      origin: ['http://localhost:3000', 'https://youfit-platform.vercel.app']
+      origin: ['http://localhost:3000', 'https://youfit-platform.vercel.app', 'https://vercel.app']
     }
   },
   'strapi::poweredBy',
