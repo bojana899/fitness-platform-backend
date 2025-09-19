@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exercises",
+  "info": {
+    "singularName": "exercise",
+    "pluralName": "exercises",
+    "displayName": "Exercise"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "youtubeUrl": {
+      "type": "string",
+      "required": true
+    },
+    "duration": {
+      "type": "integer",
+      "min": 1,
+      "max": 60
+    },
+    "muscleGroup": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Chest, ",
+        "Back,",
+        " Shoulders,",
+        " Arms,",
+        " Legs,",
+        " Core,",
+        " Full Body,",
+        " Cardio,",
+        "Booty,",
+        " Legs,Booty"
+      ]
+    },
+    "equipment": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "None, ",
+        "Dumbbells,",
+        " Barbell,",
+        " Resistance Bands,",
+        " Bodyweight,",
+        " Machine,",
+        " Kettlebell"
+      ]
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Beginner,",
+        " Intermediate, ",
+        "Advanced"
+      ]
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tags": {
+      "type": "json"
+    }
+  }
+}
